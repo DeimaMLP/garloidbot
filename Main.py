@@ -1,8 +1,22 @@
+from flask import Flask
 import telebot
 import random
 
+app = Flask(__name__)
+
 token = '7681308855:AAGnyZxlgXSMdogWou0geL0ExUGyGX0E5Xo'
 bot = telebot.TeleBot(token)
+
+# List of quotes and images as per your existing code
+
+@app.route('/')
+def health_check():
+    return 'Bot is running', 200  # Health check endpoint
+
+if __name__ == "__main__":
+    bot.infinity_polling()  # Start bot polling
+    app.run(host='0.0.0.0', port=8000)  # Run Flask on port 8000
+
 
 # List of quotes
 quotes = [
